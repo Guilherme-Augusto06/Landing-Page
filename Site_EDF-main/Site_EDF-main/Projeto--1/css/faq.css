@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.questao h3{
+    color: var(--color-brown);
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    margin-bottom: 1rem;
+    max-width: 1400 px;
+    align-items: center;
+    border-bottom: 0.7px solid;
+
+}
+.questao h3::after{
+    content: '\25BC';
+    font-size: 0.985rem;
+    padding: 10px;
+}
+.resposta{
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+    margin-bottom: 1rem;
+    max-width: 1200px;
+    align-items: center;
+
+}
+.titulo-faq{
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 85px;
+    letter-spacing: 2px;
+    font-family: var(--font-display);   
+
+
+}
+
