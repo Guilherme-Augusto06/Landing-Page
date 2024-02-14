@@ -9,52 +9,42 @@ CORS(app)
 
 # Tenta criar o arquivo Text.csv caso ele não exista e escreve o cabeçalho
 try:
-  open('Text.csv', 'x')
-  with open("Text.csv", "a", encoding='utf-8'
-            ) as arquivo:  # Cria o arquivo Text.csv com leitura de UTF-8
-    arquivo.write("ID,TAREFA\n")
+    open('Text.csv', 'x')
+    with open("Text.csv", "a", encoding='utf-8') as arquivo:
+        # Cria o arquivo Text.csv com leitura de UTF-8
+        arquivo.write("Valor,Marca,Descrição\n")
 except:
-  pass
+    pass
+
+# Define a rota para listar os produtos
+@app.route("/carrinho", methods=['GET'])
+def listarCarrinho():
+    # Lê o arquivo Text.csv e filtra os itens do carrinho
+    carrinho = pd.read_csv('Text.csv')
+    carrinho = carrinho.to_dict('records')
+    # Retorna os itens do carrinho em formato JSON
+    return jsonify(carrinho)
 
 
-# Define a rota para listar as tarefas
-@app.route("/list", methods=['GET'])
-def listarTarefas():
-  # Lê o arquivo Text.csv e converte para um dicionário
-  tarefas = pd.read_csv('Text.csv')  # Lê o arquivo Text.csv
-  tarefas = tarefas.to_dict(
-      'records')  # Converte o DataFrame para um dicionário
-  # Retorna as tarefas em formato JSON
-  return jsonify(tarefas)
-
-
-# Define a rota para adicionar uma tarefa
+# Define a rota para adicionar um produto
+# Define a rota para adicionar um produto
 @app.route("/add", methods=['POST'])
-def addTarefas():
-  # Obtém a tarefa enviada pelo cliente
-  item = request.json
-  # Lê o arquivo Text.csv e converte para um DataFrame
-  tarefas = pd.read_csv('Text.csv')
-
-  # Define o ID da nova tarefa
-  if tarefas.empty:
-    id_tarefa = 1
-  else:
-    id_tarefa = tarefas['ID'].max() + 1
-
-  # Adiciona a nova tarefa ao arquivo Text.csv  
-  with open("Text.csv", "a", encoding='utf-8') as arquivo:  # Cria o arquivo Text.csv com leitura de UTF-8
-    arquivo.write(f"{id_tarefa},{item['Tarefa']}\n")  # Escreve a nova tarefa no arquivo Text.csv
-
-  # Lê o arquivo Text.csv e converte para um dicionário
-  tarefas = pd.read_csv('Text.csv')  # Lê o arquivo Text.csv
-  tarefas = tarefas.to_dict('records')  # Converte o DataFrame para um dicionário
-  # Retorna as tarefas em formato JSON
-  return jsonify(tarefas)
-
-
+def addProduto():
+    # Obtém o produto enviado pelo cliente
+    produto = request.json
+    
+    # Adiciona o produto ao arquivo Text.csv  
+    with open("Text.csv", "a", encoding='utf-8') as arquivo:
+        arquivo.write(f"{produto['valor']},{produto['marca']},{produto['descricao']}\n")
+    
+    # Lê o arquivo Text.csv e converte para um dicionário
+    produtos = pd.read_csv('Text.csv')
+    produtos = produtos.to_dict('records')
+    
+    # Retorna os produtos em formato JSON
+    return jsonify(produtos)
 
 
 # Inicia a aplicação Flask
 if __name__ == '__main__':
-  app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")
