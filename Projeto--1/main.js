@@ -27,7 +27,7 @@ function todos_Eventos() {
     document.querySelector("#comprar_headset").addEventListener("click", function() {
         const produto = {
             marca: "Headset Gamer Razer Kraken",
-            descricao: "Multi Platform Green P2, Verde, RZ.AU.KR.03.RT",
+            descricao: "Multi Platform Green P2-Verde-RZ.AU.KR.03.RT",
             valor: 699.99
         };
         adicionarProdutoAoCarrinho(produto);
@@ -64,14 +64,15 @@ function todos_Eventos() {
     });
 }
 
+// Função para adicionar produto ao carrinho
 function adicionarProdutoAoCarrinho(produto) {
     axios.post(`http://127.0.0.1:5000/add`, produto)
         .then(function() {
             alert(`O produto ${produto.marca} foi adicionado ao carrinho.`);
-            window.location.reload(); // Recarrega a página
+            // Recarregar a página após adicionar o produto ao carrinho
+            location.reload();
         })
         .catch(function(error) {
             console.error(error);
         });
 }
-
