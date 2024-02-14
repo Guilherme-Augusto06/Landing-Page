@@ -17,14 +17,14 @@ except:
     pass
 
 # Define a rota para listar os produtos
-@app.route("/carrinho", methods=['GET'])
-def listarCarrinho():
-    # Lê o arquivo Text.csv e filtra os itens do carrinho
-    carrinho = pd.read_csv('Text.csv')
-    carrinho = carrinho.to_dict('records')
-    # Retorna os itens do carrinho em formato JSON
-    return jsonify(carrinho)
-
+@app.route("/list", methods=['GET'])
+def listarProdutos():
+    # Lê o arquivo Text.csv e converte para um dicionário
+    produtos = pd.read_csv('Text.csv')
+    # Converte o DataFrame para um dicionário
+    produtos = produtos.to_dict('records')
+    # Retorna os produtos em formato JSON
+    return jsonify(produtos)
 
 # Define a rota para adicionar um produto
 # Define a rota para adicionar um produto
