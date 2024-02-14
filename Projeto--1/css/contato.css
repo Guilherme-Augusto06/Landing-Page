@@ -1,0 +1,67 @@
+.contatos{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 700px;
+    margin: auto;
+
+}
+
+.loc-tel{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+}
+
+.e-mail{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+}
+
+.hr{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 1px solid #000;
+    width: 100%;
+    text-align: center;
+}
+
+.form{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 700px;
+    margin: auto;
+}
+
+.redes{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+}
+
+.redes-sciais{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #000;
+    text-align: center;
+}
+
+#but-1{
+    background-color: blueviolet;
+}
+
+#add-tarefa{
+    background-color: blueviolet;
+    border: black;
+}
